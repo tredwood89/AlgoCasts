@@ -10,22 +10,54 @@
 
 function chunk(array, size, chunkArr = []) {
 
-  let miniArr = []
 
-  if (array.length === 0){
-    return chunkArr
+    let miniArr = []
+
+    if (array.length === 0){
+      return chunkArr
+    }
+
+   for ( let i = 0; i < size; i++) {
+     if (array.length > 0){
+       miniArr.push(array.shift())
+     }
   }
 
- for ( let i = 0; i < size; i++) {
-   if (array.length > 0){
-     miniArr.push(array.shift())
-   }
-   
-}
+    chunkArr.push(miniArr)
 
-  chunkArr.push(miniArr)
+    return chunk(array, size, chunkArr)
 
-  return chunk(array, size, chunkArr)
+
+  // let mainArr = []
+  // let index = 0
+  //
+  // while (index < array.length){
+  //   mainArr.push(array.slice(index, index+size))
+  //   index += size
+  // }
+  //
+  // return mainArr
+
+
+// let mainArr = []
+//
+// array.forEach( char => {
+//
+//   let lastEl = mainArr[mainArr.length - 1]
+//
+//   if ( !lastEl || lastEl.length === size){
+//     mainArr.push([char])
+//   } else {
+//     lastEl.push(char)
+//   }
+// })
+//
+// return mainArr
+
+
+
+
+
 }
 
 module.exports = chunk;
